@@ -1,10 +1,20 @@
-import React from 'react';
-import YouTube, { YouTubeProps } from 'react-youtube';
+import React, { useState } from 'react';
+import YouTube, { YouTubeProps, YouTubeEvent } from 'react-youtube';
 
 const Player: React.FC = () => {
+  const [player, setPlayer] = useState<YouTubeEvent>();
+
   const onPlayerReady: YouTubeProps['onReady'] = (event) => {
-    // access to player in all event handlers via event.target
+    setPlayer(event);
     event.target.playVideo();
+  };
+
+  const play = () => {
+    player?.target.playVideo();
+  };
+
+  const pause = () => {
+    player?.target.pauseVideo();
   };
 
   const opts: YouTubeProps['opts'] = {
@@ -15,7 +25,13 @@ const Player: React.FC = () => {
     },
   };
 
-  return <YouTube videoId='8nXqcugV2Y4' opts={opts} onReady={onPlayerReady} />;
+  return (
+    <div>
+      <YouTube videoId='8nXqcugV2Y4' opts={opts} onReady={onPlayerReady} />
+      <button onClick={() => play()}>Play</button>
+      <button onClick={() => pause()}>Pause</button>
+    </div>
+  );
 };
 
 export default Player;
