@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Player from '../../components/Player';
+
 import { SocketContext } from '../../services/socket';
 
 type MessageProps = {
@@ -25,6 +27,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
+      <Player />
       <input
         type='text'
         name='user'
