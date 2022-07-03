@@ -1,11 +1,12 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import YouTube, { YouTubeProps, YouTubeEvent } from 'react-youtube';
 
 interface PlayerProps {
   videoId: string;
+  startAt: number;
 }
 
-const Player = ({ videoId }: PlayerProps) => {
+const Player = ({ videoId, startAt }: PlayerProps) => {
   const [player, setPlayer] = useState<YouTubeEvent>();
 
   const onPlayerReady: YouTubeProps['onReady'] = (event) => {
@@ -14,28 +15,39 @@ const Player = ({ videoId }: PlayerProps) => {
   };
 
   const handleStateChange: YouTubeProps['onStateChange'] = (event) => {
-    console.log(event);
+    // console.log(event.)
+    switch (event.data) {
+      case 0:
+        // socket.emit('next');
+        break;
+      case 2:
+        player?.target.playVideo();
+        break;
+      default:
+        break;
+    }
   };
 
   const play = useCallback(() => {
     player?.target.playVideo();
-  }, [player?.target]);
+  }, []);
 
-  const pause = () => {
+  const pause = useCallback(() => {
     player?.target.pauseVideo();
-  };
+  }, []);
 
   const opts: YouTubeProps['opts'] = {
     height: '500',
     width: '500',
     playerVars: {
       autoplay: 1,
+      start: startAt,
     },
   };
 
-  // useEffect(() => {
-  //   play();
-  // }, [play, videoId]);
+  useEffect(() => {
+    play();
+  }, [videoId]);
 
   return (
     <div>
@@ -43,10 +55,10 @@ const Player = ({ videoId }: PlayerProps) => {
         videoId={videoId}
         opts={opts}
         onReady={onPlayerReady}
-        // onStateChange={handleStateChange}
+        onStateChange={handleStateChange}
       />
-      <button onClick={() => play()}>Play</button>
-      <button onClick={() => pause()}>Pause</button>
+      {/* <button onClick={() => play()}>Play</button>
+      <button onClick={() => pause()}>Pause</button> */}
     </div>
   );
 };
