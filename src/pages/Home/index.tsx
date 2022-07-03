@@ -12,6 +12,7 @@ const Home: React.FC = () => {
   const socket = useContext(SocketContext);
 
   const [username, setUsername] = useState('');
+  const [videoId, setVideoId] = useState('');
   const [body, setBody] = useState('');
   const [chatHistory, setChatHistory] = useState<MessageProps[]>([]);
 
@@ -23,11 +24,15 @@ const Home: React.FC = () => {
     socket.on('message', (history) => {
       setChatHistory(history);
     });
+
+    socket.on('nowPlaying', (id) => {
+      setVideoId(id);
+    });
   }, [socket]);
 
   return (
     <div>
-      <Player />
+      {videoId && <Player videoId={videoId} />}
       <input
         type='text'
         name='user'
