@@ -24,6 +24,8 @@ const Chat: React.FC = () => {
 
   const handleSendMessage = () => {
     socket.emit('message', { username, body });
+
+    setBody('');
   };
 
   useEffect(() => {
