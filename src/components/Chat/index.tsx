@@ -23,7 +23,7 @@ const Chat: React.FC = () => {
   const [chatHistory, setChatHistory] = useState<MessageProps[]>([]);
 
   const handleSendMessage = () => {
-    if (body !== '') {
+    if (body !== '' && username !== '') {
       socket.emit('message', { username, body });
 
       setBody('');
