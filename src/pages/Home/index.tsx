@@ -28,7 +28,7 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      {videoId ? <Player videoId={videoId} startAt={videoTimer} /> : null}
+      <Player videoId={videoId} startAt={videoTimer} />
       <Chat />
     </Container>
   );

@@ -2,10 +2,10 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import Home from './pages/Home';
-import GlobalStyle from './theme/global';
+import GlobalStyle from './styles/theme/global';
 
 import { socket, SocketContext } from './services/socket';
-import { theme } from './theme';
+import { theme } from './styles/theme/default';
 
 function App() {
   console.log(theme);
