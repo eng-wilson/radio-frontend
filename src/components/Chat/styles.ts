@@ -7,9 +7,8 @@ const randomColor = function (colors: any) {
 
 export const Container = styled.aside`
   height: 100%;
-  width: 100%;
-
-  max-width: 350px;
+  width: 350px;
+  min-width: 350px;
 
   background: #18181b;
 `;
