@@ -18,7 +18,7 @@ export const HistoryContainer = styled.ul`
   width: 100%;
 
   margin: 0px;
-  padding: 8px 16px;
+  padding: 16px;
 
   overflow-y: scroll;
 `;
