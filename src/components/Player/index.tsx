@@ -1,6 +1,8 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import YouTube, { YouTubeProps, YouTubeEvent } from 'react-youtube';
 
+import { Container } from './styles';
+
 interface PlayerProps {
   videoId: string;
   startAt: number;
@@ -50,16 +52,14 @@ const Player = ({ videoId, startAt }: PlayerProps) => {
   }, [videoId]);
 
   return (
-    <div>
+    <Container>
       <YouTube
         videoId={videoId}
         opts={opts}
         onReady={onPlayerReady}
         onStateChange={handleStateChange}
       />
-      {/* <button onClick={() => play()}>Play</button>
-      <button onClick={() => pause()}>Pause</button> */}
-    </div>
+    </Container>
   );
 };
 
