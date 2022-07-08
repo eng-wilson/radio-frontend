@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-const randomColor = function (colors: any) {
-  var keys = Object.keys(colors);
-  return colors[keys[(keys.length * Math.random()) << 0]];
-};
-
 export const Container = styled.aside`
   height: 100%;
   width: 350px;
