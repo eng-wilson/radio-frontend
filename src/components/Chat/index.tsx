@@ -22,12 +22,13 @@ const Chat: React.FC = () => {
   const [body, setBody] = useState('');
   const [chatHistory, setChatHistory] = useState<MessageProps[]>([]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = (e: any) => {
     if (body !== '' && username !== '') {
       socket.emit('message', { username, body });
 
       setBody('');
     }
+    e.preventDefault();
   };
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const Chat: React.FC = () => {
         ))}
       </HistoryContainer>
 
-      <InputContainer>
+      <InputContainer onSubmit={handleSendMessage}>
         <Input
           type='text'
           name='user'
@@ -67,7 +68,7 @@ const Chat: React.FC = () => {
           }}
         />
 
-        <Submit onClick={() => handleSendMessage()}>Chat</Submit>
+        <Submit type='submit'>Chat</Submit>
       </InputContainer>
     </Container>
   );

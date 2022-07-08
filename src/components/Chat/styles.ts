@@ -38,7 +38,7 @@ export const Nickname = styled.span`
   color: ${(props) => randomColor(props.theme.colors)};
 `;
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.form`
   width: 100%;
   height: 20%;
   padding: 0px 8px;
