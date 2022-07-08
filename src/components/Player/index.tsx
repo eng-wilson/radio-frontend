@@ -53,12 +53,14 @@ const Player = ({ videoId, startAt }: PlayerProps) => {
 
   return (
     <Container>
-      <YouTube
-        videoId={videoId}
-        opts={opts}
-        onReady={onPlayerReady}
-        onStateChange={handleStateChange}
-      />
+      {videoId ? (
+        <YouTube
+          videoId={videoId}
+          opts={opts}
+          onReady={onPlayerReady}
+          onStateChange={handleStateChange}
+        />
+      ) : null}
     </Container>
   );
 };
