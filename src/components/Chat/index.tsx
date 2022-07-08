@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useTheme } from 'styled-components';
 import { SocketContext } from '../../services/socket';
 
 import {
@@ -14,18 +15,27 @@ import {
 type MessageProps = {
   username: string;
   body: string;
+  color: string;
 };
 
 const Chat: React.FC = () => {
+  const { colors } = useTheme();
   const messagesEndRef = useRef<null | HTMLLIElement>(null);
   const socket = useContext(SocketContext);
   const [username, setUsername] = useState('');
   const [body, setBody] = useState('');
   const [chatHistory, setChatHistory] = useState<MessageProps[]>([]);
 
+  const randomColor = function (colors: any) {
+    var keys = Object.keys(colors);
+    return colors[keys[(keys.length * Math.random()) << 0]];
+  };
+
   const handleSendMessage = (e: any) => {
+    const messageColor = randomColor(colors);
+
     if (body !== '' && username !== '') {
-      socket.emit('message', { username, body });
+      socket.emit('message', { username, body, color: messageColor });
 
       setBody('');
     }
@@ -54,7 +64,7 @@ const Chat: React.FC = () => {
       <HistoryContainer>
         {chatHistory.map((message) => (
           <ListItem ref={messagesEndRef}>
-            <Nickname>{message.username}</Nickname>
+            <Nickname color={message.color}>{message.username}</Nickname>
             {`: ${message.body}`}
           </ListItem>
         ))}

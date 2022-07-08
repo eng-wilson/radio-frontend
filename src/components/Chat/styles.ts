@@ -35,7 +35,7 @@ export const ListItem = styled.li`
 
 export const Nickname = styled.span`
   font-weight: 900;
-  color: ${(props) => randomColor(props.theme.colors)};
+  color: ${({ color }) => color || '#fff'};
 `;
 
 export const InputContainer = styled.form`
