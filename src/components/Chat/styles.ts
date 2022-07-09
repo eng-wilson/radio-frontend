@@ -4,11 +4,17 @@ export const Container = styled.aside`
   height: 100%;
   width: 350px;
   min-width: 350px;
-  flex: 1;
 
   padding: 0px 8px;
 
   background: #18181b;
+
+  @media (max-width: 960px) {
+    width: 100%;
+    height: 50%;
+
+    padding: 20px 8px;
+  }
 `;
 
 export const HistoryContainer = styled.ul`
@@ -74,6 +80,7 @@ export const Submit = styled.button`
 
   width: 50px;
   height: 40px;
+  min-height: 40px;
   border-radius: 5px;
 
   border: none;

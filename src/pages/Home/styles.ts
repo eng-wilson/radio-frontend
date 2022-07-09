@@ -10,6 +10,12 @@ export const Container = styled.main`
   background-image: url(${background});
 
   display: flex;
+  flex-direction: row;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `;
 
 export const ContactContainer = styled.div`
@@ -31,6 +37,10 @@ export const ContactContainer = styled.div`
 
   a {
     color: #fff;
+  }
+
+  @media (max-width: 960px) {
+    bottom: 93%;
   }
 `;
 

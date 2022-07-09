@@ -17,4 +17,12 @@ export const Container = styled.div`
     max-height: 750px;
     height: 50vw;
   }
+
+  @media (max-width: 960px) {
+    height: 50%;
+
+    * {
+      height: 90%;
+    }
+  }
 `;
