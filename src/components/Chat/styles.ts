@@ -63,7 +63,7 @@ export const Input = styled.input`
 `;
 
 export const Submit = styled.button`
-  background: #9147ff;
+  background: #5b99ff;
   color: #fff;
   font-weight: bold;
 

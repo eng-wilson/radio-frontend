@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useTheme } from 'styled-components';
+import { useNickname } from '../../hooks/useNickname';
 import { SocketContext } from '../../services/socket';
 
 import {
@@ -22,7 +23,7 @@ const Chat: React.FC = () => {
   const { colors } = useTheme();
   const messagesEndRef = useRef<null | HTMLLIElement>(null);
   const socket = useContext(SocketContext);
-  const [username, setUsername] = useState('');
+  const { nickname } = useNickname();
   const [body, setBody] = useState('');
   const [chatHistory, setChatHistory] = useState<MessageProps[]>([]);
 
@@ -34,8 +35,8 @@ const Chat: React.FC = () => {
   const handleSendMessage = (e: any) => {
     const messageColor = randomColor(colors);
 
-    if (body !== '' && username !== '') {
-      socket.emit('message', { username, body, color: messageColor });
+    if (body !== '' && nickname !== '') {
+      socket.emit('message', { username: nickname, body, color: messageColor });
 
       setBody('');
     }
@@ -71,15 +72,6 @@ const Chat: React.FC = () => {
       </HistoryContainer>
 
       <InputContainer onSubmit={handleSendMessage}>
-        <Input
-          type='text'
-          name='user'
-          value={username}
-          placeholder='Nickname'
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-        />
         <Input
           type='text'
           name='message'
