@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
+
 import { useNickname } from '../../hooks/useNickname';
 
-import { StyledModal, Container, Title, Input, Button, Dialog } from './styles';
+import {
+  StyledModal,
+  Container,
+  Title,
+  Input,
+  Button,
+  Dialog,
+  Icon,
+} from './styles';
 
 interface ModalProps {
   modalIsOpen: boolean;
@@ -22,6 +31,7 @@ const Modal = ({ modalIsOpen, closeModal }: ModalProps) => {
   return modalIsOpen ? (
     <Dialog>
       <Container>
+        <Icon onClick={() => closeModal()} />
         <Title>How do you want to be called?</Title>
 
         <Input

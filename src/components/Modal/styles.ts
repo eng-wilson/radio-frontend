@@ -1,8 +1,26 @@
 import styled from 'styled-components';
+import { MdOutlineClose } from 'react-icons/md';
 
 export const Dialog = styled.div`
   width: 100%;
   height: 100%;
+`;
+
+export const Icon = styled(MdOutlineClose)`
+  color: #fff;
+  font-size: 2rem;
+
+  position: absolute;
+  right: 16px;
+  top: 16px;
+
+  cursor: pointer;
+
+  opacity: 0.75;
+
+  :hover {
+    opacity: 1;
+  }
 `;
 
 export const StyledModal = styled.div`
