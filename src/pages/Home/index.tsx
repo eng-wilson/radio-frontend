@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+
 import Chat from '../../components/Chat';
 import Player from '../../components/Player';
+import { useNickname } from '../../hooks/useNickname';
 
 import { SocketContext } from '../../services/socket';
 
@@ -8,6 +11,7 @@ import { Container } from './styles';
 
 const Home: React.FC = () => {
   const socket = useContext(SocketContext);
+  const { nickname } = useNickname();
   const [videoId, setVideoId] = useState('');
   const [videoTimer, setVideoTimer] = useState(0);
 
@@ -22,11 +26,20 @@ const Home: React.FC = () => {
     });
   }, [socket]);
 
+  useEffect(() => {
+    if (nickname) {
+      toast.dark(`Welcome, ${nickname}!`);
+    }
+  }, [nickname]);
+
   return (
-    <Container>
-      <Player videoId={videoId} startAt={videoTimer} />
-      <Chat />
-    </Container>
+    <>
+      <ToastContainer />
+      <Container>
+        <Player videoId={videoId} startAt={videoTimer} />
+        <Chat />
+      </Container>
+    </>
   );
 };
 
