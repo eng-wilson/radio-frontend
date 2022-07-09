@@ -105,7 +105,9 @@ const Chat = () => {
           }}
         />
 
-        <Submit type='submit'>Chat</Submit>
+        <Submit disabled={!body} type='submit'>
+          Chat
+        </Submit>
       </InputContainer>
 
       <Modal modalIsOpen={openModal} closeModal={toggleModal} />

@@ -77,4 +77,12 @@ export const Submit = styled.button`
 
   display: block;
   margin-left: auto;
+
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  :hover {
+    background: ${({ disabled, theme }) => !disabled && theme.colors.blue600};
+    transition: 0.2s;
+  }
 `;

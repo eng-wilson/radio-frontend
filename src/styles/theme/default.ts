@@ -14,6 +14,7 @@ export const theme: DefaultTheme = {
     purple600: '#b454ff',
 
     blue500: '#5b99ff',
+    blue600: '#2B6CB0',
 
     yellow900: '#daa520',
   },
