@@ -9,4 +9,12 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  * {
+    max-width: 900px;
+    width: 100%;
+
+    max-height: 750px;
+    height: 50vw;
+  }
 `;

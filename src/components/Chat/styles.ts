@@ -4,6 +4,7 @@ export const Container = styled.aside`
   height: 100%;
   width: 350px;
   min-width: 350px;
+  flex: 1;
 
   padding: 0px 8px;
 
