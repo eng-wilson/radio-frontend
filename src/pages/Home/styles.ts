@@ -41,6 +41,7 @@ export const ContactContainer = styled.div`
 
   @media (max-width: 960px) {
     bottom: 93%;
+    left: 10px;
   }
 `;
 
