@@ -5,9 +5,22 @@ interface InputProps {
   error: boolean;
 }
 
-export const Dialog = styled.div`
+interface AnimationProps {
+  animate: boolean;
+}
+
+export const Dialog = styled.div<AnimationProps>`
   width: 100%;
   height: 100%;
+
+  ${({ animate }) =>
+    animate &&
+    css`
+      ${Container} {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    `}
 `;
 
 export const Icon = styled(MdOutlineClose)`
@@ -27,7 +40,7 @@ export const Icon = styled(MdOutlineClose)`
   }
 `;
 
-export const StyledModal = styled.div`
+export const StyledModal = styled.div<AnimationProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +51,8 @@ export const StyledModal = styled.div`
   right: 0;
   bottom: 0;
   background-color: #121212;
-  opacity: 0.75;
+  opacity: ${({ animate }) => (animate ? 0.75 : 0)};
+  transition: 0.25s ease-in;
 `;
 
 export const Container = styled.dialog`
@@ -52,7 +66,11 @@ export const Container = styled.dialog`
   max-height: 400px;
 
   background: #050505;
-  opacity: 1;
+
+  opacity: 0;
+  transform: translateY(500px);
+
+  transition: 0.25s ease-in;
 
   z-index: 1;
 

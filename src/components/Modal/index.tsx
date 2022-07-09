@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useNickname } from '../../hooks/useNickname';
 
@@ -21,6 +21,7 @@ const Modal = ({ modalIsOpen, closeModal }: ModalProps) => {
   const { setNickname } = useNickname();
   const [error, setError] = useState(false);
   const [textInput, setTextInput] = useState('');
+  const [animate, setAnimate] = useState(false);
 
   const handleSetNickname = () => {
     if (textInput !== '') {
@@ -32,10 +33,26 @@ const Modal = ({ modalIsOpen, closeModal }: ModalProps) => {
     }
   };
 
+  const handleClose = () => {
+    setAnimate(false);
+
+    setTimeout(() => {
+      closeModal();
+    }, 250);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (modalIsOpen) {
+        setAnimate(modalIsOpen);
+      }
+    }, 0);
+  }, [modalIsOpen]);
+
   return modalIsOpen ? (
-    <Dialog>
+    <Dialog animate={animate}>
       <Container>
-        <Icon onClick={() => closeModal()} />
+        <Icon onClick={() => handleClose()} />
         <Title>How do you want to be called?</Title>
 
         <Input
@@ -52,7 +69,7 @@ const Modal = ({ modalIsOpen, closeModal }: ModalProps) => {
         </Button>
       </Container>
 
-      <StyledModal onClick={() => closeModal()} />
+      <StyledModal animate={animate} onClick={() => handleClose()} />
     </Dialog>
   ) : null;
 };
