@@ -11,7 +11,7 @@ export const Container = styled.aside`
 
   @media (max-width: 960px) {
     width: 100%;
-    height: 40%;
+    height: 50%;
 
     padding: 20px 8px;
   }
