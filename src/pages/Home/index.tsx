@@ -11,11 +11,6 @@ const Home: React.FC = () => {
   const socket = useContext(SocketContext);
   const [videoId, setVideoId] = useState('');
   const [videoTimer, setVideoTimer] = useState(0);
-  const [openModal, setOpenModal] = useState(true);
-
-  const toggleModal = () => {
-    setOpenModal((value) => !value);
-  };
 
   useEffect(() => {
     socket.on('nowPlaying', (id, timer) => {
@@ -30,7 +25,6 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      <Modal modalIsOpen={openModal} closeModal={toggleModal} />
       <Player videoId={videoId} startAt={videoTimer} />
       <Chat />
     </Container>

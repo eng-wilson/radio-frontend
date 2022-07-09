@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNickname } from '../../hooks/useNickname';
 
-import { StyledModal, Container, Title, Input, Button } from './styles';
+import { StyledModal, Container, Title, Input, Button, Dialog } from './styles';
 
 interface ModalProps {
   modalIsOpen: boolean;
@@ -20,7 +20,7 @@ const Modal = ({ modalIsOpen, closeModal }: ModalProps) => {
   };
 
   return modalIsOpen ? (
-    <>
+    <Dialog>
       <Container>
         <Title>How do you want to be called?</Title>
 
@@ -34,8 +34,8 @@ const Modal = ({ modalIsOpen, closeModal }: ModalProps) => {
         <Button onClick={handleSetNickname}>Let's go</Button>
       </Container>
 
-      <StyledModal />
-    </>
+      <StyledModal onClick={() => closeModal()} />
+    </Dialog>
   ) : null;
 };
 

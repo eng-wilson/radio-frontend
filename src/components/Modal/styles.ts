@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Dialog = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
 export const StyledModal = styled.div`
   display: flex;
   justify-content: center;
@@ -14,7 +19,7 @@ export const StyledModal = styled.div`
   opacity: 0.75;
 `;
 
-export const Container = styled.div`
+export const Container = styled.dialog`
   position: absolute;
   inset: 0;
   margin: auto;

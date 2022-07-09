@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useTheme } from 'styled-components';
 import { useNickname } from '../../hooks/useNickname';
 import { SocketContext } from '../../services/socket';
+import Modal from '../Modal';
 
 import {
   Container,
@@ -26,6 +27,11 @@ const Chat: React.FC = () => {
   const { nickname } = useNickname();
   const [body, setBody] = useState('');
   const [chatHistory, setChatHistory] = useState<MessageProps[]>([]);
+  const [openModal, setOpenModal] = useState(false);
+
+  const toggleModal = () => {
+    setOpenModal((value) => !value);
+  };
 
   const randomColor = function (colors: any) {
     var keys = Object.keys(colors);
@@ -34,11 +40,18 @@ const Chat: React.FC = () => {
 
   const handleSendMessage = (e: any) => {
     const messageColor = randomColor(colors);
+    if (nickname) {
+      if (body && nickname) {
+        socket.emit('message', {
+          username: nickname,
+          body,
+          color: messageColor,
+        });
 
-    if (body !== '' && nickname !== '') {
-      socket.emit('message', { username: nickname, body, color: messageColor });
-
-      setBody('');
+        setBody('');
+      }
+    } else {
+      toggleModal();
     }
     e.preventDefault();
   };
@@ -83,6 +96,8 @@ const Chat: React.FC = () => {
 
         <Submit type='submit'>Chat</Submit>
       </InputContainer>
+
+      <Modal modalIsOpen={openModal} closeModal={toggleModal} />
     </Container>
   );
 };
