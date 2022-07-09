@@ -19,12 +19,16 @@ interface ModalProps {
 
 const Modal = ({ modalIsOpen, closeModal }: ModalProps) => {
   const { setNickname } = useNickname();
+  const [error, setError] = useState(false);
   const [textInput, setTextInput] = useState('');
 
   const handleSetNickname = () => {
     if (textInput !== '') {
+      setError(false);
       setNickname(textInput);
       closeModal();
+    } else {
+      setError(true);
     }
   };
 
@@ -36,9 +40,11 @@ const Modal = ({ modalIsOpen, closeModal }: ModalProps) => {
 
         <Input
           value={textInput}
+          placeholder='Type here'
           onChange={(e) => {
             setTextInput(e.target.value);
           }}
+          error={error}
         />
 
         <Button onClick={handleSetNickname}>Let's go</Button>

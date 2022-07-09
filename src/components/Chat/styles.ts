@@ -65,7 +65,7 @@ export const Input = styled.textarea`
 `;
 
 export const Submit = styled.button`
-  background: #5b99ff;
+  background: ${({ theme }) => theme.colors.blue500};
   color: #fff;
   font-weight: bold;
 

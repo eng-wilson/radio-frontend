@@ -1,5 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { MdOutlineClose } from 'react-icons/md';
+
+interface InputProps {
+  error: boolean;
+}
 
 export const Dialog = styled.div`
   width: 100%;
@@ -67,15 +71,22 @@ export const Title = styled.h1`
   text-align: center;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<InputProps>`
   height: 50px;
   width: 100%;
   max-width: 400px;
+
+  background: #fafafa;
 
   margin-top: 50px;
   padding: 0px 16px;
 
   border-radius: 5px;
+  ${({ error }) =>
+    error &&
+    css`
+      border: 2px solid ${({ theme }) => theme.colors.red500};
+    `}
 
   font-weight: 600;
   font-size: 18px;
