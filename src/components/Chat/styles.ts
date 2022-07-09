@@ -25,6 +25,10 @@ export const HistoryContainer = styled.ul`
   padding: 16px;
 
   overflow-y: scroll;
+
+  @media (max-width: 960px) {
+    height: 50%;
+  }
 `;
 
 export const ListItem = styled.li`
@@ -107,7 +111,7 @@ export const ActionButton = styled.button`
   height: 40px;
   border-radius: 5px;
 
-  margin-top: 40px;
+  margin-top: 20px;
 
   border: none;
 
