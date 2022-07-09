@@ -47,7 +47,9 @@ const Modal = ({ modalIsOpen, closeModal }: ModalProps) => {
           error={error}
         />
 
-        <Button onClick={handleSetNickname}>Let's go</Button>
+        <Button disabled={!textInput} onClick={handleSetNickname}>
+          Let's go
+        </Button>
       </Container>
 
       <StyledModal onClick={() => closeModal()} />

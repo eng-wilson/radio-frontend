@@ -102,12 +102,18 @@ export const Button = styled.button`
 
   border-radius: 5px;
 
-  background: #5b99ff;
+  background: ${({ theme }) => theme.colors.blue500};
 
   color: #fff;
   font-weight: 600;
   font-size: 18px;
   text-align: center;
 
-  cursor: pointer;
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  :hover {
+    background: ${({ disabled, theme }) => !disabled && theme.colors.blue600};
+    transition: 0.2s;
+  }
 `;
