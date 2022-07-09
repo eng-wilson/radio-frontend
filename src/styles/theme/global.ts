@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
     background: #0e0e10;
 
     overflow: hidden;
+
+    @media (max-width: 960px) {
+    overflow-y: scroll;
+    }
   }
 
   ::-webkit-scrollbar {
