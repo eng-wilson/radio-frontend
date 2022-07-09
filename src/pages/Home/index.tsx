@@ -7,7 +7,12 @@ import { useNickname } from '../../hooks/useNickname';
 
 import { SocketContext } from '../../services/socket';
 
-import { Container } from './styles';
+import {
+  ContactContainer,
+  Container,
+  GithubIcon,
+  LinkedinIcon,
+} from './styles';
 
 const Home: React.FC = () => {
   const socket = useContext(SocketContext);
@@ -38,6 +43,24 @@ const Home: React.FC = () => {
       <Container>
         <Player videoId={videoId} startAt={videoTimer} />
         <Chat />
+
+        <ContactContainer>
+          By Wilson Carvalho
+          <a
+            href='https://www.linkedin.com/in/dev-wilson/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <LinkedinIcon />
+          </a>
+          <a
+            href='https://github.com/eng-wilson'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <GithubIcon />
+          </a>
+        </ContactContainer>
       </Container>
     </>
   );
