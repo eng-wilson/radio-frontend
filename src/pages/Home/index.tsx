@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Chat from '../../components/Chat';
-import Modal from '../../components/Modal';
 import Player from '../../components/Player';
 
 import { SocketContext } from '../../services/socket';

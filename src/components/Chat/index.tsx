@@ -20,7 +20,11 @@ type MessageProps = {
   color: string;
 };
 
-const Chat: React.FC = () => {
+type UserColor = {
+  [user: string]: string;
+};
+
+const Chat = () => {
   const { colors } = useTheme();
   const messagesEndRef = useRef<null | HTMLLIElement>(null);
   const socket = useContext(SocketContext);
@@ -28,19 +32,26 @@ const Chat: React.FC = () => {
   const [body, setBody] = useState('');
   const [chatHistory, setChatHistory] = useState<MessageProps[]>([]);
   const [openModal, setOpenModal] = useState(false);
+  const [userColor, setUserColor] = useState<UserColor>({});
 
   const toggleModal = () => {
     setOpenModal((value) => !value);
   };
 
-  const randomColor = function (colors: any) {
-    var keys = Object.keys(colors);
-    return colors[keys[(keys.length * Math.random()) << 0]];
+  const randomColor = function (nickname: string, colors: any) {
+    if (userColor[nickname]) {
+      return userColor[nickname];
+    } else {
+      const keys = Object.keys(colors);
+      const color = colors[keys[(keys.length * Math.random()) << 0]];
+      setUserColor({ ...userColor, [nickname]: color });
+      return color;
+    }
   };
 
   const handleSendMessage = (e: any) => {
-    const messageColor = randomColor(colors);
     if (nickname) {
+      const messageColor = randomColor(nickname, colors);
       if (body && nickname) {
         socket.emit('message', {
           username: nickname,
