@@ -40,7 +40,7 @@ export const ContactContainer = styled.div`
   }
 
   @media (max-width: 960px) {
-    bottom: 20px;
+    bottom: 92%;
     left: 10px;
   }
 `;
