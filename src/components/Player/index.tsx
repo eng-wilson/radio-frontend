@@ -39,8 +39,8 @@ const Player = ({ videoId, startAt }: PlayerProps) => {
   }, []);
 
   const opts: YouTubeProps['opts'] = {
-    height: '500',
-    width: '500',
+    height: '800',
+    width: '1000',
     playerVars: {
       autoplay: 1,
       start: startAt,

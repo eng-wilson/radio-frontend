@@ -5,6 +5,8 @@ export const Container = styled.aside`
   width: 350px;
   min-width: 350px;
 
+  padding: 0px 8px;
+
   background: #18181b;
 `;
 
@@ -65,7 +67,7 @@ export const Input = styled.textarea`
 `;
 
 export const Submit = styled.button`
-  background: ${({ theme }) => theme.colors.blue500};
+  background: ${({ theme }) => theme.colors.purple600};
   color: #fff;
   font-weight: bold;
 
@@ -81,8 +83,35 @@ export const Submit = styled.button`
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+
+  transition: 0.2s;
+
   :hover {
-    background: ${({ disabled, theme }) => !disabled && theme.colors.blue600};
-    transition: 0.2s;
+    background: ${({ disabled, theme }) => !disabled && theme.colors.purple800};
+  }
+`;
+export const ActionButton = styled.button`
+  background: ${({ theme }) => theme.colors.purple600};
+  color: #fff;
+  font-weight: bold;
+
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+
+  margin-top: 40px;
+
+  border: none;
+
+  display: block;
+
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+
+  transition: 0.2s;
+
+  :hover {
+    background: ${({ disabled, theme }) => !disabled && theme.colors.purple800};
   }
 `;

@@ -120,7 +120,7 @@ export const Button = styled.button`
 
   border-radius: 5px;
 
-  background: ${({ theme }) => theme.colors.blue500};
+  background: ${({ theme }) => theme.colors.purple600};
 
   color: #fff;
   font-weight: 600;
@@ -130,8 +130,10 @@ export const Button = styled.button`
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+
+  transition: 0.2s;
+
   :hover {
-    background: ${({ disabled, theme }) => !disabled && theme.colors.blue600};
-    transition: 0.2s;
+    background: ${({ disabled, theme }) => !disabled && theme.colors.purple800};
   }
 `;

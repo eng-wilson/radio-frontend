@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import background from '../../assets/background.jpg';
 
 export const Container = styled.main`
   width: 100vw;
   height: 100vh;
 
-  background: #0e0e10;
+  background-image: url(${background});
 
   display: flex;
 `;

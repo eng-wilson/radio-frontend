@@ -12,6 +12,7 @@ import {
   ListItem,
   Nickname,
   Submit,
+  ActionButton,
 } from './styles';
 
 type MessageProps = {
@@ -95,20 +96,26 @@ const Chat = () => {
         ))}
       </HistoryContainer>
 
-      <InputContainer onSubmit={handleSendMessage}>
-        <Input
-          name='message'
-          value={body}
-          placeholder='Message'
-          onChange={(e) => {
-            setBody(e.target.value);
-          }}
-        />
+      {nickname ? (
+        <InputContainer onSubmit={handleSendMessage}>
+          <Input
+            name='message'
+            value={body}
+            placeholder='Message'
+            onChange={(e) => {
+              setBody(e.target.value);
+            }}
+          />
 
-        <Submit disabled={!body} type='submit'>
-          Chat
-        </Submit>
-      </InputContainer>
+          <Submit disabled={!body} type='submit'>
+            Chat
+          </Submit>
+        </InputContainer>
+      ) : (
+        <ActionButton onClick={() => toggleModal()}>
+          Set a username to chat
+        </ActionButton>
+      )}
 
       <Modal modalIsOpen={openModal} closeModal={toggleModal} />
     </Container>
