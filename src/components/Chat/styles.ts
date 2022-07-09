@@ -44,14 +44,16 @@ export const InputContainer = styled.form`
   align-items: center;
 `;
 
-export const Input = styled.input`
+export const Input = styled.textarea`
+  resize: none;
+
   background: #4c4c4f;
   color: #fff;
 
-  padding: 0px 8px;
+  padding: 10px 8px;
   margin-bottom: 8px;
 
-  height: 40px;
+  min-height: 40px;
   width: 100%;
 
   border: none;

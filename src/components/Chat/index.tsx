@@ -73,7 +73,6 @@ const Chat: React.FC = () => {
 
       <InputContainer onSubmit={handleSendMessage}>
         <Input
-          type='text'
           name='message'
           value={body}
           placeholder='Message'
