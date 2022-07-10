@@ -43,6 +43,14 @@ $ git clone https://github.com/eng-wilson/radio-frontend.git && cd radio-fronten
 
 **Follow the steps below**
 
+**1. Create a .env file on your project root with the following variables**
+
+```js
+API_PROD_URL=your-production-server-url-here
+API_DEV_URL=your-localhost-url-here
+```
+
+
 ```bash
 # Install the dependencies
 $ yarn
