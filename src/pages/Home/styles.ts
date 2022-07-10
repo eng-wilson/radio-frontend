@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 import { IoLogoLinkedin, IoLogoGithub } from 'react-icons/io';
 
-import background from '../../assets/background.jpg';
+import background from '../../assets/background-large.jpg';
 
 export const Container = styled.main`
   width: 100vw;
   height: 100vh;
 
   background-image: url(${background});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
   display: flex;
   flex-direction: row;
