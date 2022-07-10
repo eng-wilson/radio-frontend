@@ -39,20 +39,22 @@ const Chat = () => {
     setOpenModal((value) => !value);
   };
 
-  const randomColor = function (nickname: string, colors: any) {
+  const randomColor = function (nickname: string) {
     if (userColor[nickname]) {
       return userColor[nickname];
     } else {
-      const keys = Object.keys(colors);
+      const keys = Object.keys(colors) as Array<keyof typeof colors>;
       const color = colors[keys[(keys.length * Math.random()) << 0]];
+
       setUserColor({ ...userColor, [nickname]: color });
+
       return color;
     }
   };
 
-  const handleSendMessage = (e: any) => {
+  const handleSendMessage = (e: React.FormEvent) => {
     if (nickname) {
-      const messageColor = randomColor(nickname, colors);
+      const messageColor = randomColor(nickname);
       if (body && nickname) {
         socket.emit('message', {
           username: nickname,
